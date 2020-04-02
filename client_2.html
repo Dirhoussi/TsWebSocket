@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>SecondeClient</title>
+</head> 
+<body>
+    <div id="mycolor" style="background-color:blue;color:white;padding:20px;text-align: center;">
+        <h1>Client 2</h1>
+      </div><br><br>
+    <div style="text-align: center;">
+        <p>Send one of this colors to the other client to discover what it will happen : black,blue,red</p>
+        <input type="text" placeholder="your message here" id="text">
+        <button>Send</button>
+    </div>
+        <div id="log"></div></div>
+        <script>
+            var sock =new WebSocket("ws://localhost:5001");
+            var log=document.getElementById("log");
+            
+            
+            sock.onopen=function(event){
+                alert("Socket connected successfully");
+           }
+                
+            sock.onmessage=function(event){
+                console.log(event.data);
+                log.innerHTML+=event.data.replace("- >",":")+"<br>"
+                var res = event.data.slice(13);
+                document.getElementById("mycolor").style.backgroundColor=res;
+            }
+            document.querySelector("button").onclick=function(){
+                var text=document.getElementById("text").value;
+                sock.send("Client 2 - > "+text);
+                log.innerHTML+="Client 2 : "+text+"<br>";
+            };   
+             </script>
+<body> 
+</html>
