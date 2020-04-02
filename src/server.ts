@@ -8,7 +8,6 @@ wss.on('connection', function(ws) {
         client.send(message);
       }
     });
-    //ws.send('....' + message);
   });
   ws.on('close', function() {
     console.log('One of clients leaves the communication');

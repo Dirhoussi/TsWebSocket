@@ -2,6 +2,9 @@
   "defaultSeverity": "error",
   "extends": ["tslint:recommended"],
   "jsRules": {},
-  "rules": { "no-console": [false, "console.log", "error"] },
+  "rules": {
+    "no-console": [false, "console.log", "error"],
+    "only-arrow-functions": false
+  },
   "rulesDirectory": []
 }
