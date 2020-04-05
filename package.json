@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "./node_modules/.bin/tsc --outDir ./build",
     "lint": "tslint -c tslint.json 'src/**/*.ts'",
-    "start": "ts-node ./src/server.ts"
+    "start": "node ./build/server.js",
+    "prestart": "npm run build"
   },
   "keywords": [],
   "author": "",
